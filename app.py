@@ -9,7 +9,8 @@ from core import (
 
 st.set_page_config(page_title='How computers see movement · Edinburgh AI',page_icon='🥋',layout='wide',initial_sidebar_state='collapsed')
 st.markdown('''<style>
-.block-container {max-width:1180px;padding-top:2rem;padding-bottom:3rem;}
+/* Leave room for Streamlit's fixed header above the workshop navigation. */
+.block-container {max-width:1180px;padding-top:6rem;padding-bottom:3rem;}
 [data-testid="stSidebar"] {border-right:1px solid #d5e1df;}
 h1,h2,h3 {letter-spacing:-.025em;}
 .stCaption {line-height:1.5;}
@@ -83,7 +84,7 @@ def task_intro(steps, why):
 
 def attempt_guide():
     with st.container(border=True):
-        st.markdown('**What counts as an attempt — and when does it start?**')
+        st.markdown('**What counts as an attempt, and when does it start?**')
         st.write('Look for one person trying to make the other fall. Count an attempt even if the other person keeps their balance and stays standing.')
         st.write('Start at the first movement into the position used to try to make the other person fall. '
                  'For example, they might begin turning their body across the other person, move their hips underneath them, '
@@ -311,7 +312,7 @@ else:
         for row in st.session_state['quiz_rows']:
             label='Attempt' if row['label'] else 'No attempt'
             answer='Attempt' if row['answer'] else 'No attempt'
-            st.write(f'**{row["clip"]}** — your answer: {answer}; label: {label}. '+('Correct.' if row['correct'] else 'Missed.'))
+            st.write(f'**{row["clip"]}**: your answer: {answer}; label: {label}. '+('Correct.' if row['correct'] else 'Missed.'))
         st.info('A couple of examples cannot establish how reliable a detector is. Think about what made the decisions easy or difficult, including camera cuts, movement and missing pose information.')
         st.markdown('**Reflection:** how would you test the idea on a new match? Which information might the skeleton miss? Why should final test examples stay separate from examples used to improve your rule?')
         st.link_button('See the real application: Judo Clipper','https://www.judoclipper.com/')
