@@ -49,12 +49,15 @@ The dependency versions match the checked local environment. The app uses OpenCV
 
 ## Included experience
 
+- Main-page step picker, position indicator and Back/Next buttons above and below each activity.
+- Numbered “What to do” instructions and a plain-English explanation of each activity’s purpose.
 - Start page linking to Judo Clipper and explaining an attempt.
 - Video playback and exact frame selection, with chronological frame strips.
+- A guided activity for marking an attempt’s start and end with two frame-range handles. This is an unscored personal observation: the supplied labels identify whole clips, not exact start/end frames.
 - Pixel-position sliders, nearest-neighbour magnification, RGB values and eight-bit binary representations.
 - Original/overlay/skeleton-only views, joint selection and numerical coordinates.
 - Pre-rendered animations of the two guided skeleton sequences.
-- A practice rule text box, predictions and label reveal.
+- A practice rule text box, predictions and label reveal; written rules survive navigation within the session.
 - A final form that requires all answers before showing any result, then locks the submitted answers for that session.
 - The original workshop GIF, preserved in an optional reference expander.
 
@@ -99,6 +102,7 @@ Run the included checks with:
 
 ```bash
 python -m unittest discover -s tests
+python scripts/check_ui.py
 ```
 
 Local checks decode the first and last frame of all eight videos, validate pose shapes, check pixel-to-binary values, omit unresolved skeleton points, and verify complete quiz submission and scoring. Separate Streamlit AppTest checks exercised every section, frame and pixel controls, all skeleton modes, practice reveal, incomplete quiz submission and a complete locked submission.
